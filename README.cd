@@ -1,0 +1,25 @@
+# KUIS 2 PENGUJIAN PERANGKAT LUNAK
+
+NAMA : ANNISA AULIA NADHILA
+
+KELAS : TI 3C / 05 
+
+NIM : 2041720023
+
+LINK VIDEO DEMONSTRASI: https://drive.google.com/drive/folders/1oTXe_2hwDP1qfEV2YoxWrhl2WD4ntyVX?usp=sharing
+
+TEST SCENARIO :
+ITEM dan Keranjang
+
+TEST CASE 1
+menambahkan item baru ke dalam keranjang
+output = berhasil - item berhasil ditambahkan
+
+
+TEST CASE 2
+menambahkan item yang sudah ada dalam keranjang / item yang sama dengan item yang sudah ada di dalam keranjang
+Output = Gagal - Produk sudah ada di keranjang'
+
+TEST CASE 3
+mengkosongkan data yang ada di dalam keranjang
+Output = Berhasil - Keranjang kosong
