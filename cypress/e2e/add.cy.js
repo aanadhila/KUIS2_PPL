@@ -24,26 +24,30 @@ describe('Malangsnack item & cart', () => {
   });
 
   it('item', () => {
-    cy.visit('https://malangsnack.000webhostapp.com/index.php?page=main&content=detail&id=1');
+    cy.visit('https://malangsnack.000webhostapp.com/index.php?page=main&content=detail&id=14');
     cy.get("button[class='btn btn-success light']").type('{enter}');
-    // cy.contains('Berhasil tambah produk dari keranjang').should('be.visible')
-    cy.wait(5000)
-    // cy.visit("https://malangsnack.000webhostapp.com/index.php?page=main&content=home");
-    //menambahkan item yg sama
-    // cy.visit('https://malangsnack.000webhostapp.com/index.php?page=main&content=detail&id=1');
-    // cy.get("button[class='btn btn-success light']").type('{enter}');
     // cy.contains('Produk sudah ada di keranjang').should('be.visible')
-    // cy.wait(8000)
+    cy.contains('Berhasil tambah produk dari keranjang').should('be.visible')
+    cy.wait(3000)
+  });
+  it('add item twice', () => {
+    ////jika menambahkan item yg sama dengan item yang sudah ada di dalam keranjang
+    cy.visit('https://malangsnack.000webhostapp.com/index.php?page=main&content=detail&id=23');
+    cy.get("button[class='btn btn-success light']").type('{enter}');
+    cy.contains('Produk sudah ada di keranjang').should('be.visible')
+    // cy.contains('Berhasil tambah produk dari keranjang').should('be.visible')
+    cy.wait(3000)
+  });
+  it('delete cart', () => {
     // menghapus dari keranjang
+    cy.visit('https://malangsnack.000webhostapp.com/index.php?page=main&content=detail&id=23');
+    cy.get("button[class='btn btn-success light']").type('{enter}');
     cy.visit("https://malangsnack.000webhostapp.com/index.php?page=main&content=cart");
-
-    cy.get("buttton[class='btn btn-warning btn-md light mt-5 kosongkanKeranjang']").type('{enter}');
+    cy.get('button[name="deleteCart"]').click();
     cy.on('window:alert', (text) => {
       expect(text).to.contains('Apa anda yakin ingin mengosongkan keranjang?');
     });
-    cy.get('#confirm-answer').contains('OK');
-    cy.contains('Berhasil hapus produk ke keranjang').should('be.visible')
+    cy.contains('Berhasil kosongkan keranjang').should('be.visible')
     cy.wait(5000)
-  });
-
+  })
 });
